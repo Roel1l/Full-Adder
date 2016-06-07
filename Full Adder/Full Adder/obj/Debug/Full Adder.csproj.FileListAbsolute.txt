@@ -1,0 +1,6 @@
+c:\users\roel\documents\visual studio 2013\Projects\Full Adder\Full Adder\bin\Debug\Full Adder.exe.config
+c:\users\roel\documents\visual studio 2013\Projects\Full Adder\Full Adder\obj\Debug\Full Adder.csprojResolveAssemblyReference.cache
+c:\users\roel\documents\visual studio 2013\Projects\Full Adder\Full Adder\bin\Debug\Full Adder.exe
+c:\users\roel\documents\visual studio 2013\Projects\Full Adder\Full Adder\bin\Debug\Full Adder.pdb
+c:\users\roel\documents\visual studio 2013\Projects\Full Adder\Full Adder\obj\Debug\Full Adder.exe
+c:\users\roel\documents\visual studio 2013\Projects\Full Adder\Full Adder\obj\Debug\Full Adder.pdb
