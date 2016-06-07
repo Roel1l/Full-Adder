@@ -15,5 +15,9 @@ namespace Full_Adder.Nodes
         List<INode> nextNodes { get; set; }
 
         void calculateOutput();
+
+        void setInput();
+
+        int getOutput();
     }
 }

@@ -25,6 +25,7 @@ namespace Full_Adder.Nodes
 
         public void calculateOutput()
         {
+            setInput();
             if (input.Count == prevNodes.Count)
             {
                 int i = input.Sum();
@@ -34,7 +35,7 @@ namespace Full_Adder.Nodes
                         output = 0;
                         break;
                     case 1:
-                        output = 1;
+                        output = 0;
                         break;
                     case 2:
                         output = 1;
@@ -42,13 +43,32 @@ namespace Full_Adder.Nodes
                     default:
                         output = -1;
                         break;
-
                 }
             }
             else
             {
                 output = -1;
             }
+        }
+
+        public void setInput()
+        {
+            if (input.Count != prevNodes.Count)
+            {
+                input.Clear();
+                foreach (var node in prevNodes)
+                {
+                    input.Add(node.getOutput());
+                }
+            }
+        }
+
+        public int getOutput()
+        {
+            if(output == -1){
+                calculateOutput();
+            }
+            return output;
         }
     }
 }

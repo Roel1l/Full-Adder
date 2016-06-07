@@ -25,6 +25,7 @@ namespace Full_Adder.Nodes
 
         public void calculateOutput()
         {
+            setInput();
             int i = input.Sum();
             if (i > 1 || i < 0)
             {
@@ -34,6 +35,22 @@ namespace Full_Adder.Nodes
             {
                 output = i;
             }
+        }
+        public void setInput()
+        {
+            foreach (var node in prevNodes)
+            {
+                input.Add(node.getOutput());
+            }
+        }
+
+        public int getOutput()
+        {
+            if (output == -1)
+            {
+                calculateOutput();
+            }
+            return output;
         }
     }
 }

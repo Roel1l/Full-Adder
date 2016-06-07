@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileReader\FileReader.cs" />
+    <Compile Include="Utility\FileReader.cs" />
     <Compile Include="Main\App.cs" />
     <Compile Include="Nodes\INPUT.cs" />
     <Compile Include="Nodes\PROBE.cs" />

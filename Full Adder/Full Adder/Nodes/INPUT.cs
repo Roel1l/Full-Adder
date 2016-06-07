@@ -36,5 +36,21 @@ namespace Full_Adder.Nodes
                 output = i;
             }
         }
+        public void setInput()
+        {
+            foreach (var node in prevNodes)
+            {
+                input.Add(node.getOutput());
+            }
+        }
+
+        public int getOutput()
+        {
+            if (output == -1)
+            {
+                calculateOutput();
+            }
+            return output;
+        }
     }
 }
