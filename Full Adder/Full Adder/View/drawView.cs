@@ -11,24 +11,13 @@ namespace Full_Adder
     {
         public void draw(Dictionary<string, INode>  _nodeDictionary)
         {
-            int nodeCount = 1;
             foreach (var node in _nodeDictionary)
             {
                 node.Value.calculateOutput();
                 Boolean mInput = false;
 
                 Console.WriteLine("------------------------------------");
-                if (node.Value.GetType().ToString() != "Full_Adder.Nodes.PROBE"
-                    && node.Value.GetType().ToString() != "Full_Adder.Nodes.INPUT")
-                {
-                    Console.WriteLine("NODE" + nodeCount + "     " + node.Value.GetType());
-                    nodeCount++;
-                }
-                else
-                {
-                    Console.WriteLine(node.Value.GetType());
-                }
-
+                Console.WriteLine(node.Key + "     " + node.Value.GetType());
                 Console.Write("Input(s): ");
                 foreach (int i in node.Value.input)
                 {

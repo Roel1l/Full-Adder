@@ -71,5 +71,16 @@ namespace Full_Adder.Nodes
             }
             return output;
         }
+
+        public Boolean validate()
+        {
+            if(prevNodes.Count == 2){
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

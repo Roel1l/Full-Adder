@@ -44,6 +44,11 @@ namespace Full_Adder.Nodes
             }
         }
 
+        public Boolean validate()
+        {
+            return true;
+        }
+
         public int getOutput()
         {
             if (output == -1)

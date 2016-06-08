@@ -19,5 +19,7 @@ namespace Full_Adder.Nodes
         void setIn();
 
         int getOutput();
+
+        Boolean validate();
     }
 }

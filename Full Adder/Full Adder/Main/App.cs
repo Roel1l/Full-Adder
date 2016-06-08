@@ -24,6 +24,7 @@ public class App
             fillNodeDictionary();
             setEdges();
             getInputsReady();
+            validateNodes();
             _nodeDictionary = reader.getInput(_nodeDictionary);
             view.draw(_nodeDictionary);
     }
@@ -99,6 +100,14 @@ public class App
         }
     }
 
-
+    private void validateNodes() { 
+        foreach(var node in _nodeDictionary){
+            if(!node.Value.validate()){
+                Console.WriteLine("Error in file");
+                Console.ReadKey();
+                Environment.Exit(0);
+            }
+        }
+    }
 
 }

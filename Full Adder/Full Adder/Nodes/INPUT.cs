@@ -52,5 +52,9 @@ namespace Full_Adder.Nodes
             }
             return output;
         }
+        public Boolean validate()
+        {
+            return true;
+        }
     }
 }
