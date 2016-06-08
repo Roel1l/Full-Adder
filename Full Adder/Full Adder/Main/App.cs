@@ -10,17 +10,22 @@ public class App
     private Dictionary<string, string> _nodes;
     private Dictionary<string, string> _edges;
     private Dictionary<string, INode> _nodeDictionary;
+    private FileReader reader;
+    private DrawView view;
 
     public App(){
-        FileReader reader = new FileReader();
-        _nodes = reader.getNodes();
-        _edges = reader.getEdges();
-            
-        createINodeClasses();
-        fillNodeDictionary();
-        setEdges();
-        getInputsReady();
-        run();
+
+            reader = new FileReader();
+            _nodes = reader.getNodes();
+            _edges = reader.getEdges();
+            view = new DrawView();
+
+            createINodeClasses();
+            fillNodeDictionary();
+            setEdges();
+            getInputsReady();
+            _nodeDictionary = reader.getInput(_nodeDictionary);
+            view.draw(_nodeDictionary);
     }
 
     private void createINodeClasses()
@@ -93,30 +98,7 @@ public class App
             }
         }
     }
-    private void run()
-    {
-        int nodeCount = -4;
-        foreach(var node in _nodeDictionary){
-            node.Value.calculateOutput();
-            Boolean mInput = false;
 
 
-            Console.WriteLine("------------------------------------");
-            Console.WriteLine("NODE" + nodeCount + "     " + node.Value.GetType());
-            Console.Write("Input(s): ");
-            foreach(int i in node.Value.input){
-                Console.Write(i);
-                if(node.Value.input.Count > 1 && !mInput){
-                    Console.Write(" + ");
-                    mInput = true;
-                }
-            }
-            Console.WriteLine("");
-            Console.WriteLine("Output: " + node.Value.output);
-            nodeCount++;
-        }
-        Console.ReadLine();
-
-    }
 
 }

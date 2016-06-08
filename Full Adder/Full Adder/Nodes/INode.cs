@@ -16,7 +16,7 @@ namespace Full_Adder.Nodes
 
         void calculateOutput();
 
-        void setInput();
+        void setIn();
 
         int getOutput();
     }

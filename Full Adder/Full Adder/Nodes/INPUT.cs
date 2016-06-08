@@ -36,7 +36,7 @@ namespace Full_Adder.Nodes
                 output = i;
             }
         }
-        public void setInput()
+        public void setIn()
         {
             foreach (var node in prevNodes)
             {
