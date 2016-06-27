@@ -14,8 +14,7 @@ namespace Full_Adder
             Dictionary<string, INode> probes = new Dictionary<string,INode>();
             foreach (var node in _nodeDictionary)
             {
-                node.Value.calculateOutput();
-
+                //Check if node is probe so nodes can be printed last
                 if(node.Value.ToString() != "Full_Adder.Nodes.PROBE"){
 
                     Boolean mInput = false;
@@ -58,7 +57,12 @@ namespace Full_Adder
                 Console.WriteLine("");
                 Console.WriteLine("Output: " + node.Value.output);
             }
-            Console.ReadKey();
+        }
+
+        public void writeEnd()
+        {
+            Console.WriteLine("\nThe simulation has ended you can now re-run te simulation");
+            Console.WriteLine("by entering new inputs\n");
         }
     }
 }

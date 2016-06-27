@@ -12,9 +12,9 @@ namespace Full_Adder
         static void Main(string[] args)
         {
             App app = new App();
+            app.run();
         }
         
     }
-    public enum bit { HIGH, LOW }
    
 }

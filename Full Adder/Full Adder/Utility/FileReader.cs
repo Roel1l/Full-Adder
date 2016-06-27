@@ -16,13 +16,14 @@ namespace Full_Adder
         Dictionary<string, string> _nodes = new Dictionary<string, string>();
         Dictionary<string, string> _edges = new Dictionary<string, string>();
 
-        public FileReader()
+        public void readFile()
         {
             try
             {
-            readFile();
-            createNodesAndEdges();
-            validateFile();
+                _nodes.Clear();
+                _edges.Clear();
+                createNodesAndEdges();
+                validateFile();
 
             }
             catch (Exception e)
@@ -64,7 +65,7 @@ namespace Full_Adder
         {
             return _edges;
         }
-        private void readFile()
+        public void chooseFile()
         {
             OpenFileDialog dialog = new OpenFileDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -72,7 +73,6 @@ namespace Full_Adder
                 _filecontents = File.ReadAllText(dialog.FileName);
             }
         }
-
         private void createNodesAndEdges()
         {
             string[] allLines = _filecontents.Split('\n');
@@ -83,7 +83,6 @@ namespace Full_Adder
                 {
                     if (i.ToCharArray()[0] != '#')
                     {
-
                             string[] s = i.Split(':');
                             if (_nodes.ContainsKey(s[0]))
                             {
@@ -107,11 +106,10 @@ namespace Full_Adder
                 if (node.Value.GetType().ToString() == "Full_Adder.Nodes.INPUT")
                 {
                     string _val = "";
-                    Console.Write("Enter input(" + node.Value.input.First() + "): ");
-                    ConsoleKeyInfo key;
+                    Console.Write("Enter input(default " + node.Value.input.First() + "): ");
+                    ConsoleKeyInfo key = new ConsoleKeyInfo();
 
-                    do
-                    {
+                    while (key.Key != ConsoleKey.Enter){
                         key = Console.ReadKey(true);
                         if (key.KeyChar.ToString() == "1" || key.KeyChar.ToString() == "0")
                         {
@@ -133,7 +131,7 @@ namespace Full_Adder
                         }
                     }
                     // Stops Receving Keys Once Enter is Pressed
-                    while (key.Key != ConsoleKey.Enter);
+                  
 
                     Console.WriteLine();
                     if (_val.Length > 0)

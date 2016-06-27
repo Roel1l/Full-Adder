@@ -6,27 +6,49 @@ using System.Linq;
 
 public class App
 {
-    private NodeFactory _factory = new NodeFactory();
+    private NodeFactory _factory;
     private Dictionary<string, string> _nodes;
     private Dictionary<string, string> _edges;
     private Dictionary<string, INode> _nodeDictionary;
-    private FileReader reader;
-    private DrawView view;
+    private FileReader _reader;
+    private DrawView _view;
 
     public App(){
+            
+            _reader = new FileReader();
+            _factory = new NodeFactory();
+            _view = new DrawView();
 
-            reader = new FileReader();
-            _nodes = reader.getNodes();
-            _edges = reader.getEdges();
-            view = new DrawView();
+            _reader.chooseFile();
+
+
+
+    }
+    public void run()
+    {
+        while (true)
+        {
+            _reader.readFile();
+
+            _nodes = _reader.getNodes();
+            _edges = _reader.getEdges();
 
             createINodeClasses();
             fillNodeDictionary();
             setEdges();
             getInputsReady();
             validateNodes();
-            _nodeDictionary = reader.getInput(_nodeDictionary);
-            view.draw(_nodeDictionary);
+
+            //Give te user the opportunity to change the default inputs
+            _nodeDictionary = _reader.getInput(_nodeDictionary);
+
+            foreach (var node in _nodeDictionary)
+            {
+                node.Value.calculateOutput();
+            }
+            _view.draw(_nodeDictionary);
+            _view.writeEnd();
+        }
     }
 
     private void createINodeClasses()

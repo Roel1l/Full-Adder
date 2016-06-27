@@ -10,3 +10,9 @@ C:\Users\A\Documents\GitHub\Full-Adder\Full Adder\Full Adder\obj\Debug\Full Adde
 C:\Users\A\Documents\GitHub\Full-Adder\Full Adder\Full Adder\bin\Debug\Full Adder.exe
 C:\Users\A\Documents\GitHub\Full-Adder\Full Adder\Full Adder\bin\Debug\Full Adder.pdb
 C:\Users\A\Documents\GitHub\Full-Adder\Full Adder\Full Adder\obj\Debug\Full Adder.csprojResolveAssemblyReference.cache
+C:\Users\Roel\Downloads\Full-Adder-master\Full Adder\Full Adder\bin\Debug\Full Adder.exe.config
+C:\Users\Roel\Downloads\Full-Adder-master\Full Adder\Full Adder\obj\Debug\Full Adder.exe
+C:\Users\Roel\Downloads\Full-Adder-master\Full Adder\Full Adder\obj\Debug\Full Adder.pdb
+C:\Users\Roel\Downloads\Full-Adder-master\Full Adder\Full Adder\bin\Debug\Full Adder.exe
+C:\Users\Roel\Downloads\Full-Adder-master\Full Adder\Full Adder\bin\Debug\Full Adder.pdb
+C:\Users\Roel\Downloads\Full-Adder-master\Full Adder\Full Adder\obj\Debug\Full Adder.csprojResolveAssemblyReference.cache
