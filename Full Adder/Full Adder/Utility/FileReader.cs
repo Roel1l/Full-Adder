@@ -23,7 +23,7 @@ namespace Full_Adder
                 _nodes.Clear();
                 _edges.Clear();
                 createNodesAndEdges();
-                validateFile();
+                //validateFile();
 
             }
             catch (Exception e)
@@ -99,7 +99,7 @@ namespace Full_Adder
                 }
             }
         }
-        public Dictionary<string, INode> getInput(Dictionary<string, INode> _nodeDictionary)
+        public Dictionary<string, INode> setInputs(Dictionary<string, INode> _nodeDictionary)
         {
             foreach (var node in _nodeDictionary)
             {

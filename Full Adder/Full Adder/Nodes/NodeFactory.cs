@@ -18,7 +18,7 @@ namespace Full_Adder
 
         public INode createNode(string name)
         {
-            INode node = name.Contains("INPUT") ? _nodes["INPUT"] : _nodes[name];
+            INode node = _nodes[name];
             INode newNode = (INode)Activator.CreateInstance(node.GetType());
             return newNode;
         }

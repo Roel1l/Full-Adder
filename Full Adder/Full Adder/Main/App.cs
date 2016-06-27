@@ -14,18 +14,13 @@ public class App
     private DrawView _view;
 
     public App(){
-            
             _reader = new FileReader();
             _factory = new NodeFactory();
             _view = new DrawView();
-
-            _reader.chooseFile();
-
-
-
     }
     public void run()
     {
+        _reader.chooseFile();
         while (true)
         {
             _reader.readFile();
@@ -34,17 +29,17 @@ public class App
             _edges = _reader.getEdges();
 
             createINodeClasses();
-            fillNodeDictionary();
+            createNodes();
             setEdges();
             getInputsReady();
             validateNodes();
 
             //Give te user the opportunity to change the default inputs
-            _nodeDictionary = _reader.getInput(_nodeDictionary);
+            _nodeDictionary = _reader.setInputs(_nodeDictionary);
 
             foreach (var node in _nodeDictionary)
             {
-                node.Value.calculateOutput();
+                    node.Value.calculateOutput();
             }
             _view.draw(_nodeDictionary);
             _view.writeEnd();
@@ -73,12 +68,13 @@ public class App
         }
     }
        
-    private void fillNodeDictionary()
+    private void createNodes()
     {
         _nodeDictionary = new Dictionary<string, INode>();
 
         foreach(var i in _nodes){
-            _nodeDictionary.Add(i.Key, _factory.createNode(i.Value));
+            string nodeType = i.Value.Contains("INPUT") ? "INPUT" : i.Value;
+            _nodeDictionary.Add(i.Key, _factory.createNode(nodeType));
         }
             
     }

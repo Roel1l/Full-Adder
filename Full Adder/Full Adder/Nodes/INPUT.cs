@@ -11,7 +11,6 @@ namespace Full_Adder.Nodes
         public List<int> input { get; set; }
         public int output { get; set; }
 
-
         public List<INode> prevNodes { get; set; }
 
         public List<INode> nextNodes { get; set; }
