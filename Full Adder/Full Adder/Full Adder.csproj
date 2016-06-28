@@ -46,6 +46,7 @@
     <Compile Include="Main\App.cs" />
     <Compile Include="Nodes\INPUT.cs" />
     <Compile Include="Nodes\PROBE.cs" />
+    <Compile Include="Utility\NodeDictionaryBuilder.cs" />
     <Compile Include="View\DrawView.cs" />
     <Compile Include="Nodes\NodeFactory.cs" />
     <Compile Include="Nodes\AND.cs" />

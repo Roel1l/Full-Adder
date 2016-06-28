@@ -55,14 +55,14 @@ namespace Full_Adder.Nodes
         }
         public void setIn()
         {
-            if (input.Count != prevNodes.Count)
-            {
-                input.Clear();
-                foreach (var node in prevNodes)
+                if (input.Count != prevNodes.Count)
                 {
-                    input.Add(node.getOutput());
+                    input.Clear();
+                    foreach (var node in prevNodes)
+                    {
+                        input.Add(node.getOutput());
+                    }
                 }
-            }
         }
 
         public int getOutput()

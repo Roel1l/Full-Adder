@@ -12,10 +12,10 @@ namespace Full_Adder
 {
     class FileReader
     {
-        string _filecontents;
-        Dictionary<string, string> _nodes = new Dictionary<string, string>();
-        Dictionary<string, string> _edges = new Dictionary<string, string>();
-
+        private string _filecontents;
+        private Dictionary<string, string> _nodes = new Dictionary<string, string>();
+        private Dictionary<string, string> _edges = new Dictionary<string, string>();
+        private int counter = 0;
         public void readFile()
         {
             try
@@ -23,7 +23,7 @@ namespace Full_Adder
                 _nodes.Clear();
                 _edges.Clear();
                 createNodesAndEdges();
-                //validateFile();
+                validateEdges();
 
             }
             catch (Exception e)
@@ -34,12 +34,58 @@ namespace Full_Adder
                 Environment.Exit(0);
             }
         }
-
         public Dictionary<string, string> getNodes()
         {
             return _nodes;
         }
 
+        private void validateEdges()
+        {
+            //Check if edges dont have some sort of infinite loop in them
+            Dictionary<string, string[]> d = new Dictionary<string, string[]>();
+
+            foreach (var i in _edges)
+            {
+                string[] s = i.Value.Split(',');
+                d.Add(i.Key, s);
+            }
+
+            foreach (var i in d)
+            {
+                    foreach (string s in d[i.Key])
+                    {
+                        counter = 0;
+                        checkForLoops(i.Key, s, d);
+                    }          
+            }
+
+        }
+        
+        private void checkForLoops(string current, string next, Dictionary<string, string[]> d)
+        {
+            if (!d.ContainsKey(next))
+            {
+                //dealing with a probe which is not present as key in the edges dictionary but this also means this path has an end and doesnt loop forever
+                return;
+            }
+
+            foreach (string s in d[next])
+            {
+                //when counter is +- 9000 StackOverFlowException will be thrown. This is prevented by ending the loop early and throwing our own exception
+                counter++;
+                if (s.Equals(current) || counter > 5000)
+                {
+                    Console.WriteLine("Infinite loop in file");
+                    Console.ReadLine();
+                    System.Environment.Exit(0);
+                }
+                else
+                {
+                    checkForLoops(current, s, d);
+                }
+            }                 
+        }
+     
         public void validateFile()
         {
             int inputCount = 0;
@@ -86,12 +132,12 @@ namespace Full_Adder
                             string[] s = i.Split(':');
                             if (_nodes.ContainsKey(s[0]))
                             {
-                                //te maken met een edge
+                                //dealing with an edge
                                 _edges.Add(s[0], s[1]);
                             }
                             else
                             {
-                                //te maken met een node
+                                //dealing with a node
                                 _nodes.Add(s[0], s[1]);
                             }
                         
@@ -101,6 +147,7 @@ namespace Full_Adder
         }
         public Dictionary<string, INode> setInputs(Dictionary<string, INode> _nodeDictionary)
         {
+            //This method gives the user the possibility to change the default inputs set in the file
             foreach (var node in _nodeDictionary)
             {
                 if (node.Value.GetType().ToString() == "Full_Adder.Nodes.INPUT")
@@ -130,7 +177,6 @@ namespace Full_Adder
                             }
                         }
                     }
-                    // Stops Receving Keys Once Enter is Pressed
                   
 
                     Console.WriteLine();
